@@ -1,0 +1,42 @@
+{
+  "name": "vanilla-js-boilerplate",
+  "version": "1.0.0",
+  "description": "A Boilerplate to build projects following the best coding formatting and git practices.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix . && prettier --write --ignore-unknown ."
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown",
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iordneto/vanilla-js-boilerplate.git"
+  },
+  "author": "Iord Neto <iordneto95@gmail.com> (https://iordneto.com.br/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iordneto/vanilla-js-boilerplate/issues"
+  },
+  "homepage": "https://github.com/iordneto/vanilla-js-boilerplate#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.15.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^12.4.1",
+    "prettier": "2.6.2",
+    "vite": "^2.9.8"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
