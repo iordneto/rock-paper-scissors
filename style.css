@@ -41,13 +41,13 @@ button {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  min-height: 50vh;
+  min-height: 60vh;
 }
 
 .game-frame .player-options {
   display: flex;
   justify-content: center;
-  min-height: 20vh;
+  min-height: 10vh;
 }
 
 .hide {
@@ -70,4 +70,17 @@ button {
 
 .score p {
   font-size: 26px;
+}
+
+.winner-flag,
+.tie-flag {
+  color: yellow;
+  font-size: 18px;
+}
+
+.versus {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
