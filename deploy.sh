@@ -8,11 +8,11 @@ npm run build
 
 # navigate into the build output directory
 
-git checkout -b gh-pages
-git add -A
-git commit -m 'deploy'
+(git show-branch gh-pages &>/dev/null) && (git checkout gh-pages) || (git checkout -b gh-pages)
+git add dist -f
+git commit -m 'deploy' --no-verify
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push -u origin gh-pages
+git subtree push --prefix dist origin gh-pages
 
 git checkout main
