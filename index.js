@@ -5,6 +5,8 @@ const gameFrame = document.querySelector(".game-frame");
 
 const playerOptions = document.querySelectorAll(".player-options button");
 const options = ["rock", "paper", "scissors"];
+
+const hands = document.querySelectorAll(".hand");
 const playerHand = document.querySelector(".player-hand");
 const computerHand = document.querySelector(".computer-hand");
 const imgDirectory = "/assets/images/";
@@ -41,15 +43,18 @@ playerOptions.forEach((option) => {
   });
 });
 
+hands.forEach((hand) => {
+  hand.addEventListener("animationend", () => {
+    hand.style.animation = "";
+  });
+});
+
 //functions
 const getUserChoice = (userInput) => {
   userInput = userInput.toLowerCase();
   if (userInput && options.some((option) => option === userInput)) {
     const userChoiceIndex = options.indexOf(userInput);
     const userChoice = options[userChoiceIndex];
-    const optionImageURL = imgDirectory + userChoice + ".png";
-
-    playerHand.setAttribute("src", optionImageURL);
 
     return userChoice;
   }
@@ -58,15 +63,13 @@ const getUserChoice = (userInput) => {
 const getComputerChoice = () => {
   const randomNumber = Math.floor(Math.random() * 3);
   const computerChoice = options[randomNumber];
-  const optionImageURL = imgDirectory + computerChoice + ".png";
-
-  computerHand.setAttribute("src", optionImageURL);
 
   return computerChoice;
 };
 
 const determineWinner = (userChoice, computerChoice) => {
   let winner = "";
+
   if (userChoice === "rock") {
     if (computerChoice === "rock") winner = "tie";
     if (computerChoice === "paper") winner = "computer";
@@ -97,6 +100,15 @@ const updateScoreBoard = (winner) => {
   }
 };
 
+const showChoices = (userChoice, computerChoice) => {
+  const playerHandChoiceURL = imgDirectory + userChoice + ".png";
+
+  playerHand.setAttribute("src", playerHandChoiceURL);
+
+  const computerHandChoiceURL = imgDirectory + computerChoice + ".png";
+  computerHand.setAttribute("src", computerHandChoiceURL);
+};
+
 const showWinner = (winner) => {
   if (winner === "user") {
     if (userWinnerFlag.classList.contains("hide"))
@@ -117,6 +129,11 @@ const showWinner = (winner) => {
 };
 
 const restartBoard = () => {
+  const rockHandURL = imgDirectory + "rock.png";
+
+  playerHand.setAttribute("src", rockHandURL);
+  computerHand.setAttribute("src", rockHandURL);
+
   if (!userWinnerFlag.classList.contains("hide"))
     userWinnerFlag.classList.add("hide");
 
@@ -127,7 +144,12 @@ const restartBoard = () => {
 };
 
 const playRound = (userChoice, computerChoice) => {
-  const winner = determineWinner(userChoice, computerChoice);
-  updateScoreBoard(winner);
-  showWinner(winner);
+  playerHand.style.animation = "shakePlayer 2s ease";
+  computerHand.style.animation = "shakeComputer 2s ease";
+  setTimeout(() => {
+    const winner = determineWinner(userChoice, computerChoice);
+    showChoices(userChoice, computerChoice);
+    updateScoreBoard(winner);
+    showWinner(winner);
+  }, 2000);
 };
