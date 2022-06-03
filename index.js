@@ -1,3 +1,7 @@
+import rockHandImg from "./images/rock.png";
+import paperHandImg from "./images/paper.png";
+import scissorsHandImg from "./images/scissors.png";
+
 //variables
 const startButton = document.querySelector(".start-button");
 const gameEntry = document.querySelector(".game-entry");
@@ -9,7 +13,6 @@ const options = ["rock", "paper", "scissors"];
 const hands = document.querySelectorAll(".hand");
 const playerHand = document.querySelector(".player-hand");
 const computerHand = document.querySelector(".computer-hand");
-const imgDirectory = "/assets/images/";
 
 const tieFlag = document.querySelector(".main .tie-flag");
 const userWinnerFlag = document.querySelector(".main .player .winner-flag");
@@ -100,13 +103,18 @@ const updateScoreBoard = (winner) => {
   }
 };
 
+const getHandImg = (choice) => {
+  if (choice === "rock") return rockHandImg;
+  if (choice === "paper") return paperHandImg;
+  if (choice === "scissors") return scissorsHandImg;
+};
+
 const showChoices = (userChoice, computerChoice) => {
-  const playerHandChoiceURL = imgDirectory + userChoice + ".png";
+  const playerHandImg = getHandImg(userChoice);
+  const computerHandImg = getHandImg(computerChoice);
 
-  playerHand.setAttribute("src", playerHandChoiceURL);
-
-  const computerHandChoiceURL = imgDirectory + computerChoice + ".png";
-  computerHand.setAttribute("src", computerHandChoiceURL);
+  playerHand.setAttribute("src", playerHandImg);
+  computerHand.setAttribute("src", computerHandImg);
 };
 
 const showWinner = (winner) => {
@@ -129,10 +137,8 @@ const showWinner = (winner) => {
 };
 
 const restartBoard = () => {
-  const rockHandURL = imgDirectory + "rock.png";
-
-  playerHand.setAttribute("src", rockHandURL);
-  computerHand.setAttribute("src", rockHandURL);
+  playerHand.setAttribute("src", rockHandImg);
+  computerHand.setAttribute("src", rockHandImg);
 
   if (!userWinnerFlag.classList.contains("hide"))
     userWinnerFlag.classList.add("hide");
