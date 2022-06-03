@@ -1,0 +1,73 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Press Start 2P", cursive;
+  background-color: #4c3575 !important;
+  color: #fff !important;
+}
+
+button {
+  height: 50px;
+  padding: 10px;
+  margin: 0px 10px !important;
+}
+
+.game-entry {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  transition: all ease 1s;
+}
+
+.game-frame {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+}
+
+.game-frame .score {
+  display: flex;
+  justify-content: space-around;
+  min-height: 10vh;
+}
+
+.game-frame .main {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 50vh;
+}
+
+.game-frame .player-options {
+  display: flex;
+  justify-content: center;
+  min-height: 20vh;
+}
+
+.hide {
+  display: none;
+  opacity: 0;
+}
+
+.main p {
+  font-size: 48px;
+}
+
+.computer-hand,
+.player-hand {
+  width: 400px;
+}
+
+.computer-hand {
+  transform: rotateY(180deg);
+}
+
+.score p {
+  font-size: 26px;
+}

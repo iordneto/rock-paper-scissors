@@ -4,13 +4,46 @@
     <meta charset="UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To-do list</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./node_modules/nes.css/css/nes.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+      rel="stylesheet"
+    />
+    <title>Rock, Paper and Scissors</title>
   </head>
 
   <body>
-    <header>
-      <h1>To-do list</h1>
-    </header>
-    <script type="module" src="/main.js"></script>
+    <div class="game-entry">
+      <header>
+        <h1>Rock, Paper and Scissors</h1>
+      </header>
+      <button type="submit" class="start-button nes-btn is-primary">
+        PLAY
+      </button>
+    </div>
+    <div class="game-frame hide">
+      <div class="score">
+        <div class="player-score">
+          <h2>Player</h2>
+          <p>0</p>
+        </div>
+        <div class="computer-score">
+          <h2>Computer</h2>
+          <p>0</p>
+        </div>
+      </div>
+      <div class="main">
+        <img src="/assets/images/rock.png" alt="" class="player-hand" />
+        <p>vs</p>
+        <img src="/assets/images/rock.png" alt="" class="computer-hand" />
+      </div>
+      <div class="player-options">
+        <button class="rock nes-btn is-primary">Rock</button>
+        <button class="paper nes-btn is-primary">Paper</button>
+        <button class="scissors nes-btn is-primary">Scissors</button>
+      </div>
+    </div>
+    <script type="module" src="/index.js"></script>
   </body>
 </html>
