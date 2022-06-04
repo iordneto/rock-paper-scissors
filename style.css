@@ -85,6 +85,13 @@ button {
   align-items: center;
 }
 
+.quit-game {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px;
+}
+
 @keyframes shakeComputer {
   0% {
     transform: rotateY(180deg) translateY(0px);
