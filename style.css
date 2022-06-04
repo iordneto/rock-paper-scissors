@@ -15,6 +15,10 @@ button {
   margin: 0px 10px !important;
 }
 
+header {
+  text-align: center;
+}
+
 .game-entry {
   display: flex;
   flex-direction: column;
@@ -22,6 +26,10 @@ button {
   align-items: center;
   height: 100vh;
   transition: all ease 1s;
+}
+
+.start-button {
+  margin: 20px !important;
 }
 
 .game-frame {
