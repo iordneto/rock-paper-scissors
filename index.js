@@ -33,11 +33,13 @@ const game = () => {
       player: 0,
       computer: 0,
     },
+    play: false,
   };
 
   //listeners
   startButton.addEventListener("click", (event) => {
     event.preventDefault();
+    gameData.play = true;
     menuSoundTheme.currentTime = 0;
     menuSoundTheme.play();
     gameEntry.classList.add("hide");
@@ -67,7 +69,19 @@ const game = () => {
     quitGame();
   });
 
+  menuSoundTheme.addEventListener("ended", () => {
+    if (gameData.play) startMusic();
+    else stopMusic();
+  });
+
   //functions
+  const startMusic = () => {
+    menuSoundTheme.currentTime = 0;
+    menuSoundTheme.play();
+  };
+
+  const stopMusic = () => menuSoundTheme.pause();
+
   const getUserChoice = (userInput) => {
     userInput = userInput.toLowerCase();
     if (userInput && options.some((option) => option === userInput)) {
@@ -173,6 +187,7 @@ const game = () => {
   };
 
   const quitGame = () => {
+    gameData.play = false;
     menuSoundTheme.pause();
     restartBoard();
     gameData.score.player = 0;
